@@ -1,0 +1,22 @@
+{
+    "type": "library",
+    "require": {
+        "php": "^8.2",
+        "illuminate/support": "^12.0",
+        "livewire/livewire": "^3.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pranavsy\\VisitCounter\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Pranavsy\\VisitCounter\\VisitCounterServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
