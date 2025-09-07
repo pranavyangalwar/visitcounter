@@ -1,17 +1,23 @@
 {
     "name": "pranavsy/visitcounter",
-    "description": "Livewire site-visit counter",
+    "description": "A Livewire visit counter component package",
     "type": "library",
     "license": "MIT",
-    "require": {
-        "php": "^8.2",
-        "illuminate/support": "^12.0",
-        "livewire/livewire": "^3.6"
-    },
+    "authors": [
+        {
+            "name": "Pranav Sy",
+            "email": "your-email@example.com"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Pranavsy\\VisitCounter\\": "src/"
         }
+    },
+    "require": {
+        "php": "^8.0",
+        "illuminate/support": "^9.0|^10.0",
+        "livewire/livewire": "^2.0"
     },
     "extra": {
         "laravel": {
@@ -20,6 +26,14 @@
             ]
         }
     },
-    "minimum-stability": "dev",
+    "scripts": {
+        "post-autoload-dump": [
+            "@php artisan vendor:publish --provider=\"Pranavsy\\VisitCounter\\VisitCounterServiceProvider\" --tag=config --force",
+            "@php artisan vendor:publish --provider=\"Pranavsy\\VisitCounter\\VisitCounterServiceProvider\" --tag=views --force",
+            "@php artisan vendor:publish --provider=\"Pranavsy\\VisitCounter\\VisitCounterServiceProvider\" --tag=migrations --force",
+            "@php artisan migrate --force"
+        ]
+    },
+    "minimum-stability": "stable",
     "prefer-stable": true
 }

@@ -8,37 +8,32 @@ class VisitCounterServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
-        // Publish config file
+        // Load package views from resources/views with namespace 'visitcounter'
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'visitcounter');
+
+        // Publish configuration file
         $this->publishes([
             __DIR__ . '/../config/visit_counter.php' => config_path('visit_counter.php'),
         ], 'config');
 
-        // Publish views
+        // Publish views to the application's resources/views/vendor/visitcounter
         $this->publishes([
             __DIR__ . '/../resources/views' => resource_path('views/vendor/visitcounter'),
         ], 'views');
 
-        // Publish migration stub with timestamped filename
-        if (! class_exists('CreateVisitCountersTable')) {
+        // Publish migration if class does not exist
+        if (!class_exists('CreateVisitCountersTable')) {
+            $timestamp = date('Y_m_d_His');
             $this->publishes([
                 __DIR__ . '/../database/migrations/create_visit_counters_table.php.stub' =>
-                database_path('migrations/' . date('Y_m_d_His') . '_create_visit_counters_table.php'),
+                database_path("migrations/{$timestamp}_create_visit_counters_table.php"),
             ], 'migrations');
         }
-        if ($this->app->runningInConsole()) {
-            $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
-
-            // Optionally run migrate, but careful with production safety
-            \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
-        }
-
-        // Load views from your package under namespace 'visitcounter'
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'visitcounter');
     }
 
     public function register(): void
     {
-        // Merge default config
+        // Merge default package config to allow config override by user
         $this->mergeConfigFrom(
             __DIR__ . '/../config/visit_counter.php',
             'visit_counter'
