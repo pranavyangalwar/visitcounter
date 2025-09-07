@@ -1362,6 +1362,7 @@ return array(
     'Normalizer' => $vendorDir . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
     'Override' => $vendorDir . '/symfony/polyfill-php83/Resources/stubs/Override.php',
     'PhpToken' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
+    'Pranavsy\\VisitCounter\\Components\\VisitCounter' => $baseDir . '/src/Components/VisitCounter.php',
     'Pranavsy\\VisitCounter\\VisitCounterServiceProvider' => $baseDir . '/src/VisitCounterServiceProvider.php',
     'Psr\\Clock\\ClockInterface' => $vendorDir . '/psr/clock/src/ClockInterface.php',
     'Psr\\Container\\ContainerExceptionInterface' => $vendorDir . '/psr/container/src/ContainerExceptionInterface.php',

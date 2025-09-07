@@ -1727,6 +1727,7 @@ class ComposerStaticInit3da885db21315ba30bbfc53acc898fe7
         'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
         'Override' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/Override.php',
         'PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
+        'Pranavsy\\VisitCounter\\Components\\VisitCounter' => __DIR__ . '/../..' . '/src/Components/VisitCounter.php',
         'Pranavsy\\VisitCounter\\VisitCounterServiceProvider' => __DIR__ . '/../..' . '/src/VisitCounterServiceProvider.php',
         'Psr\\Clock\\ClockInterface' => __DIR__ . '/..' . '/psr/clock/src/ClockInterface.php',
         'Psr\\Container\\ContainerExceptionInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerExceptionInterface.php',
