@@ -14,32 +14,28 @@ class VisitCounter extends Component
     {
         $this->slug = $slug;
 
-        // Try to increment visits atomically
-        $updated = DB::table(config('visit_counter.table'))
+        $table = config('visit_counter.table', 'visit_counters');
+
+        // Atomically increment the visits count for existing slug
+        $updated = DB::table($table)
             ->where('slug', $this->slug)
             ->increment('visits');
 
         if (!$updated) {
-            // If no rows updated, insert new record with visits = 1
-            DB::table(config('visitcounter.table'))
-                ->insert([
-                    'slug' => $this->slug,
-                    'visits' => 1,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ]);
+            // Insert new row if slug not found, with visits = 1
+            DB::table($table)->insert([
+                'slug' => $this->slug,
+                'visits' => 1,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
             $this->visits = 1;
         } else {
-            // Get the updated visits count
-            $this->visits = DB::table(config('visitcounter.table'))
+            // Retrieve current visits count after increment
+            $this->visits = DB::table($table)
                 ->where('slug', $this->slug)
                 ->value('visits');
         }
-    }
-
-    public function increment(): void
-    {
-        $this->visits++;
     }
 
     public function render()
