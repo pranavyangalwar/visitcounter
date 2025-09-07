@@ -31,7 +31,7 @@ class VisitCounter extends Component
             $this->visits = 1;
         } else {
             // Get the updated visits count
-            $this->visits = DB::table(config('visitcounter.table'))
+            $this->visits = DB::table(config('visit_counter.table'))
                 ->where('slug', $this->slug)
                 ->value('visits');
         }
