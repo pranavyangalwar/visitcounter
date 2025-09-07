@@ -22,17 +22,18 @@ class VisitCounter extends Component
             ->increment('visits');
 
         if (!$updated) {
-            // Insert new row if slug not found, with visits = 1
-            DB::table($table)->insert([
-                'slug' => $this->slug,
-                'visits' => 1,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
+            // If no rows updated, insert new record with visits = 1
+            DB::table(config('visitcounter.table'))
+                ->insert([
+                    'slug' => $this->slug,
+                    'visits' => 1,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
             $this->visits = 1;
         } else {
-            // Retrieve current visits count after increment
-            $this->visits = DB::table($table)
+            // Get the updated visits count
+            $this->visits = DB::table(config('visitcounter.table'))
                 ->where('slug', $this->slug)
                 ->value('visits');
         }
