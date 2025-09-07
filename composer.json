@@ -1,5 +1,8 @@
 {
+    "name": "pranavsy/visitcounter",
+    "description": "Livewire site-visit counter",
     "type": "library",
+    "license": "MIT",
     "require": {
         "php": "^8.2",
         "illuminate/support": "^12.0",
