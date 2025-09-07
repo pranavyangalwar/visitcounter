@@ -21,7 +21,7 @@ class VisitCounter extends Component
 
         if (!$updated) {
             // If no rows updated, insert new record with visits = 1
-            DB::table(config('visitcounter.table'))
+            DB::table(config('visit_counter.table'))
                 ->insert([
                     'slug' => $this->slug,
                     'visits' => 1,
