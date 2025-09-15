@@ -1,0 +1,22 @@
+{
+    "name": "pranavsy/visitcounter",
+    "description": "Zero-configuration Laravel visitor counter using cache/file storage",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": ">=8.0",
+        "illuminate/support": "^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pranavsy\\VisitCounter\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Pranavsy\\VisitCounter\\VisitCounterServiceProvider"
+            ]
+        }
+    }
+}
